@@ -62,10 +62,21 @@
         }
 
         /* Piece rendering */
+       /* 🔥 HIGH-PERFORMANCE FLAT PIECES 🔥 */
         .piece-417db {
             scale: 0.88; 
-            filter: drop-shadow(0px 0px 2px #FFF) drop-shadow(0px 4px 5px rgba(0,0,0,0.4)) !important;
-            transition: scale 0.1s ease-in-out; will-change: filter, scale; 
+            /* Remove all shadows for that clean "sticker" look and max speed */
+            filter: none !important; 
+            transition: scale 0.1s ease-in-out; 
+            /* Tell the phone to handle movement with the GPU */
+            will-change: transform; 
+        }
+
+        /* Remove square-specific overrides so pieces stay flat everywhere */
+        .white-1e1d7 .piece-417db, 
+        .black-3c85d .piece-417db, 
+        body > img.piece-417db {
+            filter: none !important;
         }
         .selected-piece .piece-417db { scale: 0.95; }
         
