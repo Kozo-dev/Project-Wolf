@@ -222,18 +222,51 @@
             box-shadow: 0 0 5px rgba(166, 70, 54, 0.5);
         }
         .active-turn .turn-dot { display: inline-block; }
+        /* --- 🛠️ COACH & BOARD OVERRIDE FIXES --- */
+
+        /* 1. Fix the Coach Portrait Size */
+        .portrait-box {
+            width: 60px !important; 
+            height: 75px !important; 
+            border: 2px solid #5C4A3D;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        /* 2. Logic to Hide the Coach Area */
+        #coach-hud {
+            display: flex; /* Default state */
+        }
+
+        /* 3. Fix the Board Height so Buttons stay on screen */
+        .hide-hud .board-container { 
+             max-height: 60vh !important; /* Limits height on mobile */
+            margin-top: 20px;
+        }
+
+        /* 4. Keep the Settings Icon in the corner */
+        .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 100;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
 
     <div class="hud-container">
-        <div class="coach-area">
+    <div class="coach-area" id="coach-hud">
+        <div class="portrait-box">
             <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Wolf&backgroundColor=D2C4B3&rotate=10" 
                  style="width:100%; height:100%; object-fit: cover; filter: sepia(0.5) contrast(0.8);">
-            <div class="chat-bubble" id="chatText">Welcome to the study. Your match is auto-saving.</div>
         </div>
-        <div class="settings-icon" onclick="openSettings()">&#9881;</div>
+        <div class="chat-bubble" id="chatText">Welcome to the study. Your match is auto-saving.</div>
     </div>
+    
+    <div class="settings-icon" onclick="openSettings()">⚙️</div>
+</div>
 
     <div class="captured-wrapper style-fan" id="wrapper-top">
         <div class="captured-area" id="captured-top"></div>
