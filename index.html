@@ -239,10 +239,12 @@
             display: flex; /* Default state */
         }
 
-        /* 3. Fix the Board Height so Buttons stay on screen */
+       /* 3. Fix the Board Size for both Laptop and Mobile */
         .hide-hud .board-container { 
-             max-height: 60vh !important; /* Limits height on mobile */
+            max-width: 500px !important; /* Caps the width so it never takes over the screen */
             margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* 4. Keep the Settings Icon in the corner */
