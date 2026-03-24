@@ -206,7 +206,6 @@
             animation: arrowFadeIn 0.28s ease-out forwards;
         }
         /* 1. Logic for Hiding the Coach */
-        .hide-hud .hud-container { display: none; }
         .hide-hud .board-container { 
             max-width: 90vh; 
             margin-top: 20px;
@@ -247,12 +246,17 @@
             margin-right: auto;
         }
 
-        /* 4. Keep the Settings Icon in the corner */
+        /* 4. The Bulletproof Settings Gear */
         .settings-icon {
-            font-size: 24px;
+            position: fixed !important; /* Pins it to the screen viewport */
+            top: 15px; 
+            right: 15px;
+            font-size: 26px; 
             cursor: pointer;
-            z-index: 100;
-            padding: 5px;
+            z-index: 9999; /* Guarantees it floats above absolutely everything */
+            padding: 10px;
+            /* Adds a tiny soft-glow so it is always readable on any background */
+            background: radial-gradient(circle, rgba(226,218,206,0.8) 0%, rgba(226,218,206,0) 70%);
         }
     </style>
 </head>
