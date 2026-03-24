@@ -63,21 +63,18 @@
 
         /* Piece rendering */
        /* 🔥 HIGH-PERFORMANCE FLAT PIECES 🔥 */
-        .piece-417db {
+       .piece-417db {
             scale: 0.88; 
-            /* Remove all shadows for that clean "sticker" look and max speed */
-            filter: none !important; 
             transition: scale 0.1s ease-in-out; 
-            /* Tell the phone to handle movement with the GPU */
-            will-change: transform; 
+            will-change: transform;
+            /* 🔥 The Smart Stroke: 4 sharp shadows create a 1px border.
+               It's invisible on light squares but carves out the piece on dark ones. */
+            filter: drop-shadow(1px 0 0 #EFE8DF) 
+                    drop-shadow(-1px 0 0 #EFE8DF) 
+                    drop-shadow(0 1px 0 #EFE8DF) 
+                    drop-shadow(0 -1px 0 #EFE8DF) !important;
         }
-
-        /* Remove square-specific overrides so pieces stay flat everywhere */
-        .white-1e1d7 .piece-417db, 
-        .black-3c85d .piece-417db, 
-        body > img.piece-417db {
-            filter: none !important;
-        }
+        
         .selected-piece .piece-417db { scale: 0.95; }
         
         /* 🔥 The Dragging Fix: Reverted to src to catch the ghost piece! 🔥 */
@@ -91,8 +88,15 @@
         /* 5. Highlights */
         .valid-move { position: relative; }
         .valid-move::after {
-            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 30%; height: 30%;
-            border: 3px solid #D66D5C; border-radius: 50%; pointer-events: none; z-index: 5;
+            content: ''; 
+            position: absolute; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 35%; height: 35%; /* Slightly larger circle */
+            border: 2px solid rgba(166, 70, 54, 0.7); /* Thinner, more "etched" look */
+            border-radius: 50%; 
+            pointer-events: none; 
+            z-index: 5;
         }
         .selected-piece { box-shadow: inset 0 0 0 999px rgba(214, 109, 92, 0.3) !important; }
         .last-move { box-shadow: inset 0 0 0 999px rgba(220, 180, 100, 0.4) !important; }
@@ -121,12 +125,14 @@
         }
 
         /* Ensure captured pieces don't inherit the board rotation */
-        .captured-piece {
+       .captured-piece {
             width: 22px;
             height: 22px;
-            filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));
+            /* Removed the shadow entirely for speed */
+            filter: none !important; 
             transform: scaleX(-1);
             rotate: 0deg !important;
+            position: relative;
         }
 
         /* Style A: Premium Fan */
