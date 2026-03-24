@@ -258,6 +258,19 @@
             /* Adds a tiny soft-glow so it is always readable on any background */
             background: radial-gradient(circle, rgba(226,218,206,0.8) 0%, rgba(226,218,206,0) 70%);
         }
+        /* --- 🛠️ TOGGLE & BUBBLE FIXES --- */
+
+        /* 1. The Missing Toggle Rule: Actually hide the coach! */
+        .hide-hud #coach-hud {
+            display: none !important;
+        }
+
+        /* 2. The Bubble Overlap Fix: Keep it away from the gear */
+        .chat-bubble {
+            margin-right: 50px !important; /* Creates a "safe zone" for the gear */
+            font-size: 14px !important; /* Slightly smaller text to fit mobile better */
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
